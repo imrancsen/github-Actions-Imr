@@ -22,14 +22,7 @@ jobs: # The jobs that run in this workflow
               repo: context.repo.repo,
               labels: ["issue", "fix"]
             })
-      
-      - name: Closed Issue Message
-        uses: aws-actions/closed-issue-message@v1
-        with:
-            # These inputs are both required
-            repo-token: "${{ secrets.GITHUB_TOKEN }}"
-            message: "Comments on closed issues are hard for our team to see." 
-
+    
       - name: Comment on new issue #this is another step that comments on the issue 
         uses: peter-evans/create-or-update-comment@v1 # This step uses the "peter-evans/create-or-update-comment" action to create or update a comment on the issue.
         with:
@@ -37,7 +30,12 @@ jobs: # The jobs that run in this workflow
           body: | # The body of the comment is a message thanking the user for opening the issue.
            Thanks for opening this issue! We'll take a look as soon as possible.
 # Comment on when an issue is closedzz
-
+      - name: Closed Issue Message
+        uses: aws-actions/closed-issue-message@v1
+        with:
+            # These inputs are both required
+            repo-token: "${{ secrets.GITHUB_TOKEN }}"
+            message: "Comments on closed issues are hard for our team to see." 
 
 
 # Comment on when an users opens the first pull request 
