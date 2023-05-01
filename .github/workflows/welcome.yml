@@ -24,7 +24,7 @@ jobs: # The jobs that run in this workflow
             })
     
       - name: Comment on new issue #this is another step that comments on the issue 
-        uses: peter-evans/create-or-update-comment@v1 # This step uses the "peter-evans/create-or-update-comment" action to create or update a comment on the issue.
+        uses: peter-evans/create-or-update-comment@v3 # This step uses the "peter-evans/create-or-update-comment" action to create or update a comment on the issue.
         with:
           issue-number: ${{ github.event.issue.number }} # The issue number is obtained from the context of the event that triggered the action.
           body: | # The body of the comment is a message thanking the user for opening the issue.
